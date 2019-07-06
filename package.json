@@ -1,0 +1,34 @@
+{
+  "name": "jira-desk",  
+  "version": "0.0.1",
+  "description": "Jira Desktop",
+  "main": "src/main.js",
+  "scripts": {
+    "dev": "electron .",
+    "build": "electron-packager ."
+  },
+  "productName": "Jira Desktop",
+  "build": {
+    "appId": "me.kiritodev.jira",
+    "productName": "Jira Desktop",
+    "win": {
+      "target": "portable",
+      "icon": "src/assets/icon.ico",
+      "productName": "Jira Desktop"
+    },
+    "linux": {
+      "target": "tar.gz",
+      "icon": "src/assets/icon.png",
+      "productName": "Jira Desktop"
+    }
+  },
+  "keywords": ["Jira","Desktop","Software"],
+  "author": "KiritoDev",
+  "license": "ISC",
+  "dependencies": {    
+    "jquery": "^3.4.1"
+  },
+  "devDependencies": {
+    "electron": "^5.0.6"
+  }
+}

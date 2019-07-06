@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div class="title" id="title">            
+            <div class="a" id="minimize" style="background: #35C94A" onclick=""></div>
+            <div class="a" id="switch" style="background: #FDBD41"></div>
+            <div class="a" id="close" style="background: #FC625D"></div>
+        </div>
+        <!-- <img class="t-icon" src="./assets/icon.png" alt="icon" width="25px" height="25px"/> -->        
+        <webview id="wb" src="https://luckyintelligence.atlassian.net/secure/RapidBoard.jspa?rapidView=1&projectKey=GSMX" autosize="on" preload="./patcher.js" style="-webkit-app-region: no-drag; position: fixed; top: 40px; left: 0; display: flex; width: 100vw; height: calc(100vh - 40px);"></webview>
+        <!-- <button id="hd" style="position: fixed; right: 10px; top: 10px;">Hide</button> -->
+        <script>
+            var $ = require('jquery');
+            const { ipcRenderer } = require('electron')
+            var webview = document.getElementById('wb');            
+            webview.addEventListener('dom-ready', () => {
+                //webview.openDevTools()
+                webview.insertCSS('html,body{ width: 100vw; height: 100vh; } ::-webkit-scrollbar { width: 0px; background: transparent; }}')
+            });
+            $("#close").click(c => {
+                ipcRenderer.send('execute', { task: 'close' });                
+            })
+            $("#minimize").click(c => {
+                ipcRenderer.send('execute', { task: 'minimize' });
+            })
+            $("#switch").click(c => {
+                ipcRenderer.send('execute', { task: 'switch' });
+            })
+        </script>
+    </body>
+</html>
